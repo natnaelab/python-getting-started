@@ -19,6 +19,9 @@ import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+def is_development():
+    return os.getenv('APP_ENVIRONMENT') == 'Development'
+
 
 IS_HEROKU = "DYNO" in os.environ
 
@@ -91,10 +94,18 @@ WSGI_APPLICATION = "gettingstarted.wsgi.application"
 
 MAX_CONN_AGE = 600
 
+DEVELOPMENT_DB = {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': os.getenv('DB_NAME'),
+    'USER': os.getenv('DB_USER'),
+    'PASSWORD': os.getenv('DB_PASSWORD'),
+    'HOST': os.getenv('DB_HOST'),
+    'PORT': os.getenv('DB_PORT'),
+}
+
+# use development postgres if environment is development
 DATABASES = {
-    "default": dj_database_url.config(
-        default="postgres://localhost", conn_max_age=MAX_CONN_AGE, ssl_require=True
-    )
+    'default': DEVELOPMENT_DB if is_development() else dj_database_url.config(conn_max_age=600, ssl_require=True),
 }
 
 # Password validation
