@@ -45,11 +45,7 @@ $(document).ready(function() {
     var dt = $('#data').DataTable({
         "pageLength": 25,
         responsive:true,
-        ajax: {
-            //url: 'https://api.npoint.io/8922f3f2bb3ac2b33c39'
-           url: 'https://raw.githubusercontent.com/PiotrKrosniak/dripmatrics/main/js/august_data.json',
-           "dataSrc": ""
-        },
+        ajax: "DataTable/json/",
         columns: [{
                 data: 'null',
                 "class": 'details-control',
