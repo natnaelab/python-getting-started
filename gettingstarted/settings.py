@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 """
 
 import os
+from pickle import TRUE
 from django.test.runner import DiscoverRunner
 from pathlib import Path
 import dj_database_url
@@ -103,7 +104,7 @@ DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 
 # use development postgres if environment is development
 
-
+DEBUG=TRUE
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
