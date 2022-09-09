@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
 
-from .models import Greeting, TableData
+from .models import  TableData
 
 # Create your views here.
 def index(request):

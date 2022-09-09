@@ -9,16 +9,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
     ]
-
-    operations = [
-        migrations.CreateModel(
-            name='Greeting',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('when', models.DateTimeField(auto_now_add=True, verbose_name='date created')),
-            ],
-        ),
-        migrations.CreateModel(
+    migrations.CreateModel(
             name='TableData',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
