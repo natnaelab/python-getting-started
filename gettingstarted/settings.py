@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 import os
 from django.test.runner import DiscoverRunner
 from pathlib import Path
+import dj_database_url
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -91,21 +92,10 @@ WSGI_APPLICATION = "gettingstarted.wsgi.application"
 MAX_CONN_AGE = 600
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3")
-    }
+    "default": dj_database_url.config(
+        default="postgres://localhost", conn_max_age=MAX_CONN_AGE, ssl_require=True
+    )
 }
-
-if "DATABASE_URL" in os.environ:
-    # Configure Django for DATABASE_URL environment variable.
-    DATABASES["default"] = dj_database_url.config(
-        conn_max_age=MAX_CONN_AGE, ssl_require=True)
-
-    # Enable test database if found in CI environment.
-    if "CI" in os.environ:
-        DATABASES["default"]["TEST"] = DATABASES["default"]
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
