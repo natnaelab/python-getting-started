@@ -9,7 +9,9 @@ class Migration(migrations.Migration):
 
     dependencies = [
     ]
-    migrations.CreateModel(
+
+    operations = [
+        migrations.CreateModel(
             name='TableData',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
