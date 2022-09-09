@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 """
 
 import os
-from pickle import TRUE
 from django.test.runner import DiscoverRunner
 from pathlib import Path
 import dj_database_url
@@ -20,8 +19,8 @@ import dj_database_url
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-def is_development():
-    return os.getenv('APP_ENVIRONMENT') == 'Development'
+ON_HEROKU = os.environ.get('ON_HEROKU')
+HEROKU_SERVER = os.environ.get('HEROKU_SERVER')
 
 
 IS_HEROKU = "DYNO" in os.environ
@@ -95,21 +94,15 @@ WSGI_APPLICATION = "gettingstarted.wsgi.application"
 
 MAX_CONN_AGE = 600
 
-DEVELOPMENT_DB = {
-    'ENGINE': 'django.db.backends.postgresql',
-    'NAME': os.getenv('DB_NAME'),
-    'USER': os.getenv('DB_USER'),
-    'PASSWORD': os.getenv('DB_PASSWORD'),
-    'HOST': os.getenv('DB_HOST'),
-    'PORT': os.getenv('DB_PORT'),
-}
+if ON_HEROKU:
+    DATABASE_URL = 'postgresql://<postgresql>'
+else:
+    DATABASE_URL = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+
+DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 
 # use development postgres if environment is development
-DATABASES = {
-    'default': DEVELOPMENT_DB if is_development() else dj_database_url.config(conn_max_age=600, ssl_require=True),
-}
 
-DEBUG=TRUE
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
