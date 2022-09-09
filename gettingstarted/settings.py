@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 """
 
 import os
+from pickle import TRUE
 from django.test.runner import DiscoverRunner
 from pathlib import Path
 import dj_database_url
@@ -107,6 +108,8 @@ DEVELOPMENT_DB = {
 DATABASES = {
     'default': DEVELOPMENT_DB if is_development() else dj_database_url.config(conn_max_age=600, ssl_require=True),
 }
+
+DEBUG=TRUE
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
