@@ -16,4 +16,4 @@ class TableData(models.Model):
     Team_benefits = models.CharField(max_length=200,blank=True, null=True)
 
     def __str__(self):
-        return self.name
+        return self.Team_name
