@@ -10,10 +10,10 @@ class TableData(models.Model):
     Total_structure = models.IntegerField(blank=True, null=True)
     Airdrops_total = models.IntegerField(blank=True, null=True)
     Airdrops_received = models.IntegerField(blank=True, null=True)
-    Team_address = models.IntegerField(blank=True, null=True)
+    Team_address = models.TextField(blank=True, null=True)
     Ranking = models.IntegerField(blank=True, null=True)
     Team_name = models.CharField(max_length=200,blank=True, null=True)
     Team_benefits = models.CharField(max_length=200,blank=True, null=True)
 
     def __str__(self):
-        return self.name
+        return self.Team_name
