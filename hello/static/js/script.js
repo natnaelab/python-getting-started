@@ -46,6 +46,7 @@ $(document).ready(function() {
         "pageLength": 25,
         responsive:true,
         ajax: "/data/json/",
+        dataSrc:'',
         columns: [{
                 data: 'null',
                 "class": 'details-control',
