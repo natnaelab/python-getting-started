@@ -45,8 +45,7 @@ $(document).ready(function() {
     var dt = $('#data').DataTable({
         "pageLength": 25,
         responsive:true,
-        ajax: "/data/json/",
-        dataSrc:'',
+        ajax:{url:"/data/json/",dataSrc:""},
         columns: [{
                 data: 'null',
                 "class": 'details-control',
