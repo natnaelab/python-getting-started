@@ -53,49 +53,49 @@ $(document).ready(function() {
                 "defaultContent": ''
             },
             {
-                data: 'ranking',
+                data: 'Ranking',
                 searchable: false,
                 responsivePriority: 1, targets: 0
             },
             {
-                data: 'team_address',
+                data: 'Team_address',
                 orderable: false,
                 render: $.fn.dataTable.render.ellipsis(),
                 responsivePriority: 1, targets: 0
             },
             {
-                data: 'team_name',
+                data: 'Team_name',
                 orderable: false,
                 searchable: false,
                 "render": function ( data, type, row ) { return '<a class="font-weight-bold">' +data +' '+ '<a class="small"></a>'; }
             },
             {
-                data: 'referrals',
+                data: 'Referrals',
                 searchable: false
             },
             {
-                data: 'total_structure',
+                data: 'Total_structure',
                 searchable: false
             },
             {
-                data: 'total_deposits',
+                data: 'Total_deposits',
                 searchable: false,
                 responsivePriority: 10001, targets: 4 
             },
             {
-                data: 'total_payouts',
+                data: 'Total_payouts',
                 searchable: false
             },
             {
-                data: 'airdrops_total',
+                data: 'Airdrops_total',
                 searchable: false
             },
             {
-                data: 'airdrops_received',
+                data: 'Airdrops_received',
                 searchable: false
             },
             {
-                data: 'team_address',
+                data: 'Team_address',
                 "mRender": function(data, type, full) {
                     return '<a class="btn btn-info btn-sm" href=https://drip.community/faucet?buddy=' + data + '>' + 'Join team' + '</a>';
                 }
