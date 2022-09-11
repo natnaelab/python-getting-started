@@ -17,5 +17,5 @@ import hello.views
 urlpatterns = [
     path("", hello.views.index, name="index"),
     path("admin/", admin.site.urls),
-    path('data/json/', hello.views.result_list, name='data_json'),
+    path('data/json/', hello.views.data_json, name='data_json'),
 ]
